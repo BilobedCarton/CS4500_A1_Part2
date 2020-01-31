@@ -1,4 +1,3 @@
-#pragma once;
 #include <iostream>
 #include "map.h"
 #include "string.h"
@@ -22,7 +21,11 @@ void test1() {
     String * val_2 = new String("2");
     h1->put(key_1, val_1);
     h1->put(key_2, val_2);
-    delete key_1, key_2, val_1, val_2;
+    delete key_1;
+    delete key_2;
+    delete val_1;
+    delete val_2;
+    delete h1;
     OK("1");
 }
 
@@ -40,7 +43,10 @@ void test2() {
     h1->put(key_1, val_2);
     t_true(h1->get_size() == 1);
     t_false(val_1 -> equals(h1->get(key_1)));
-    delete key_1, val_1, val_2;
+    delete key_1; 
+    delete val_1;
+    delete val_2;
+    delete h1;
     OK("2");
 }
 
@@ -58,7 +64,11 @@ void test3() {
     h1->put(key_2, val_2);
     t_true(h1->get(key_1)->equals(val_1));
     t_true(h1->get(key_2)->equals(val_2));
-    delete key_1, key_2, val_1, val_2;
+    delete key_1;
+    delete key_2;
+    delete val_1;
+    delete val_2;
+    delete h1;
     OK("3");
 }
 
@@ -90,7 +100,11 @@ void test5() {
     t_true(h1->remove(key_1)->equals(val_1));
     t_false(h1->remove(key_2)->equals(val_1));
     t_true(h1->remove(key_1) == nullptr);
-    delete key_1, key_2, val_1, val_2, h1;
+    delete key_1;
+    delete key_2;
+    delete val_1;
+    delete val_2;
+    delete h1;
     OK("5");
 }
 
@@ -110,7 +124,12 @@ void test6() {
     t_true(h1->contains_key(key_1));
     t_true(h1->contains_key(key_2));
     t_false(h1->contains_key(key_3));
-    delete key_1, key_2, val_1, val_2, key_3, h1;
+    delete key_1;
+    delete key_2;
+    delete val_1;
+    delete val_2;
+    delete key_3;
+    delete h1;
     OK("6");
 }
 
@@ -136,7 +155,13 @@ void test7() {
     for (int i=0; i< 3; i++) {
         t_true(val_1 -> equals(values_array[i]) || val_2 -> equals(values_array[i]) || val_3 -> equals(values_array[i]));
     }
-    delete key_1, key_2, key_3, val_1, val_2, val_3, h1;
+    delete key_1;
+    delete key_2;
+    delete key_3;
+    delete val_1;
+    delete val_2;
+    delete val_3;
+    delete h1;
     OK("9");
 }
 
